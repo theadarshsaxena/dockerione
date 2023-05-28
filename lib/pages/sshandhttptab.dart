@@ -1,5 +1,6 @@
 import 'package:dockerione/pages/ssh_subpage.dart';
 import 'package:flutter/material.dart';
+import 'http_subpage.dart';
 
 class HttpSSHTab extends StatelessWidget {
   final String ipAddress;
@@ -22,7 +23,7 @@ class HttpSSHTab extends StatelessWidget {
           body: TabBarView(children: [
             // call device details page
             DeviceDetailPage(ipAddress: ipAddress),
-            const Text("http"),
+            HTTPDetailTab(ipAddress: ipAddress),
           ]),
         ));
   }

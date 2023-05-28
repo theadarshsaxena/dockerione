@@ -111,71 +111,74 @@ class _DeviceDetailPageState extends State<DeviceDetailPage> {
     return Scaffold(
         body: Padding(
       padding: EdgeInsets.all(10.0),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          TextField(
-            controller: _usernameController,
-            decoration: const InputDecoration(
-              labelText: 'Username',
-            ),
-          ),
-          SizedBox(height: 16.0),
-          TextField(
-            controller: _passwordController,
-            obscureText: true,
-            decoration: const InputDecoration(
-              labelText: 'Password',
-            ),
-          ),
-          const SizedBox(height: 16.0),
-          Text("Device IP: " + widget.ipAddress),
-          const SizedBox(
-            height: 16,
-          ),
-          Row(
-            children: [
-              const Text('Run as super user (sudo)'),
-              const SizedBox(width: 8.0),
-              Switch(
-                value: _sudoEnabled,
-                onChanged: (value) {
-                  setState(() {
-                    _sudoEnabled = value;
-                  });
-                },
+      child: SingleChildScrollView(
+        physics: AlwaysScrollableScrollPhysics(),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            TextField(
+              controller: _usernameController,
+              decoration: const InputDecoration(
+                labelText: 'Username',
               ),
-            ],
-          ),
-          const SizedBox(height: 16.0),
-          TextField(
-            controller: _CommandController,
-            decoration: const InputDecoration(
-              labelText: 'command',
             ),
-          ),
-          const SizedBox(height: 16.0),
-          ElevatedButton(
-            onPressed: () => onClickCmd(
-                _usernameController.text,
-                _passwordController.text,
-                _CommandController.text,
-                _sudoEnabled),
-            // () {
-            //   String username = _usernameController.text;
-            //   String password = _passwordController.text;
-            //   // Perform login logic here
-            //   print('Username: $username');
-            //   print('Password: $password');
-            //   if (_sudoEnabled == true)
-            //     print("true");
-            //   else
-            //     print("false");
-            // },
-            child: const Text('Login'),
-          ),
-          Text(_result),
-        ],
+            SizedBox(height: 16.0),
+            TextField(
+              controller: _passwordController,
+              obscureText: true,
+              decoration: const InputDecoration(
+                labelText: 'Password',
+              ),
+            ),
+            const SizedBox(height: 16.0),
+            Text("Device IP: " + widget.ipAddress),
+            const SizedBox(
+              height: 16,
+            ),
+            Row(
+              children: [
+                const Text('Run as super user (sudo)'),
+                const SizedBox(width: 8.0),
+                Switch(
+                  value: _sudoEnabled,
+                  onChanged: (value) {
+                    setState(() {
+                      _sudoEnabled = value;
+                    });
+                  },
+                ),
+              ],
+            ),
+            const SizedBox(height: 16.0),
+            TextField(
+              controller: _CommandController,
+              decoration: const InputDecoration(
+                labelText: 'command',
+              ),
+            ),
+            const SizedBox(height: 16.0),
+            ElevatedButton(
+              onPressed: () => onClickCmd(
+                  _usernameController.text,
+                  _passwordController.text,
+                  _CommandController.text,
+                  _sudoEnabled),
+              // () {
+              //   String username = _usernameController.text;
+              //   String password = _passwordController.text;
+              //   // Perform login logic here
+              //   print('Username: $username');
+              //   print('Password: $password');
+              //   if (_sudoEnabled == true)
+              //     print("true");
+              //   else
+              //     print("false");
+              // },
+              child: const Text('Login'),
+            ),
+            Text(_result),
+          ],
+        ),
       ),
     )
         //     body: ListView(
